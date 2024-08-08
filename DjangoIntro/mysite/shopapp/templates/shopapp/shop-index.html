@@ -1,0 +1,25 @@
+{% extends "shopapp/base.html" %}
+
+{% block body %}
+    <h1>Hello world shopapp!</h1>
+
+    <div>Time running: {{ time_running }}</div>
+    <div>Current_date: {{ current_date }}</div>
+    <div>Timestamp: {{ timestamp }}</div>
+
+    <div>{% lorem 5 p random %}</div>
+
+    <div>
+        <ul>
+            {% for name, price in products %}
+                <li> {{ name|title }} for ${{ price }}. product name length {{ name|length }}</li>
+                {% if name|length_is:'4' %}
+                <span>Great product!</span>
+                {% endif %}
+            {% empty %}
+                No products her.
+            {% endfor %}
+        </ul>
+    </div>
+
+{% endblock %}

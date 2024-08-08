@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        {% block title %}
+        Base title
+        {% endblock %}
+    </title>
+</head>
+<body>
+{% block body %}
+Base body
+{% endblock %}
+
+<div>
+    {% now "H:i" as cur_time %}
+    It is {{ cur_time }}
+</div>
+</body>
+</html>
