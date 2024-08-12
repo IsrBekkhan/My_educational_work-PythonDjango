@@ -20,8 +20,8 @@ def mark_unarchived(model_admin: admin.ModelAdmin, request: HttpRequest, queryse
     queryset.update(archived=False)
 
 
-@admin.register(Product, ExportAsCSVMixin)
-class ProductAdmin(admin.ModelAdmin):
+@admin.register(Product)
+class ProductAdmin(admin.ModelAdmin, ExportAsCSVMixin):
     actions = [
         mark_archived,
         mark_unarchived,
