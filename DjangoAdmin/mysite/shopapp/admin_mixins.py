@@ -7,7 +7,6 @@ from django.db.models.options import Options
 
 class ExportAsCSVMixin:
     def export_csv(self, request: HttpRequest, queryset: QuerySet):
-        print("=" * 200)
         meta: Options = self.model._meta
         field_names = [field.name for field in meta.fields]
 
