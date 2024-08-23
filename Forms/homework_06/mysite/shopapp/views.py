@@ -69,7 +69,7 @@ def create_order(request: HttpRequest) -> HttpResponse:
     context = {
         "form": form
     }
-    return render(request, "shopapp/create-order.html", context=context)
+    return render(request, "shopapp/order_form.html", context=context)
 
 
 
