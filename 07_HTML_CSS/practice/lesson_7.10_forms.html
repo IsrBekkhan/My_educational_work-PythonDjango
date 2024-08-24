@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Элементы форм</title>
+    <style>
+
+        h1 {
+            text-align: center;
+        }
+
+        .reg-form {
+            max-width: 500px;
+            margin: 0 auto;
+        }
+
+        .reg-form > div {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+
+        .reg-form__input {
+            width: 50%;
+        }
+
+        .reg-form textarea {
+            height: 150px;
+        }
+        
+    </style>
+</head>
+<body>
+    <form class="reg-form" method="post">
+        <h1>Регистрация на конференцию</h1>
+        <div>
+            <label for="name">Фамилия, имя, отчество:</label>
+            <input type="text" id="name" name="name" class="reg-form__input">
+        </div>
+        <div>
+            <label for="email">E-mail:</label>
+            <input type="email" id="email" name="email" class="reg-form__input">
+        </div>
+        <div>
+            <label>Пол:</label>
+            <div>
+                <label><input type="radio" name="sex" value="male"> мужской</label>
+                <label><input type="radio" name="sex" value="female"> женский</label>
+            </div>
+        </div>
+        <div>
+            <label>Предпочтительное время выступления:</label>
+            <div>
+                <label><input type="checkbox" name="time_morning" value="1">утро</label>
+                <label><input type="checkbox" name="time_afternoon" value="2">день</label>
+                <label><input type="checkbox" name="time_everning" value="3">вечер</label>
+            </div>
+        </div>
+        <div>
+            <label>Секция:</label>
+            <select name="section" class="reg-form__input">
+                <option value="frontend">Frontend</option>
+                <option value="backend">Backend</option>
+                <option value="managment">Менеджмент</option>
+            </select>
+        </div>
+        <div>
+            <label>Тема и тезисы выступления</label>
+            <textarea name="info" class="reg-form__input"></textarea>
+        </div>
+        <div>
+            <label>Презентация</label>
+            <input type="file" name="presentation">
+        </div>
+        <div>
+            <input type="reset" value="Сбросить">
+            <input type="submit" value="Отправить">
+        </div>
+    </form>
+</body>
+</html>
