@@ -88,9 +88,10 @@ class ProductUpdateView(UserPassesTestMixin, UpdateView):
 
     def test_func(self):
         product = self.get_object()
-        return (self.request.user.is_superuser or
-                self.request.user == product.created_by or
-                self.request.user.has_perm("shopapp.change_product"))
+        return (
+                self.request.user.is_superuser or
+                (self.request.user == product.created_by and self.request.user.has_perm("shopapp.change_product"))
+        )
 
 
 class ProductDeleteView(DeleteView):
