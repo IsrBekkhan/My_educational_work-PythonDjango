@@ -1,0 +1,50 @@
+[
+  {
+    "model": "shopapp.product",
+    "pk": 4,
+    "fields": {
+      "name": "Car",
+      "description": "Best car",
+      "price": "5000.00",
+      "discount": 10,
+      "created_at": "2024-08-30T11:56:27.148Z",
+      "archived": false
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 5,
+    "fields": {
+      "name": "Laptop",
+      "description": "Rog delta s",
+      "price": "1000.00",
+      "discount": 10,
+      "created_at": "2024-08-30T11:56:40.526Z",
+      "archived": false
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 6,
+    "fields": {
+      "name": "Notebook",
+      "description": "Best book",
+      "price": "1000.00",
+      "discount": 20,
+      "created_at": "2024-08-30T11:56:51.821Z",
+      "archived": false
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 7,
+    "fields": {
+      "name": "Best product",
+      "description": "It's the best product!",
+      "price": "100000.00",
+      "discount": 10,
+      "created_at": "2024-08-30T13:53:30.903Z",
+      "archived": true
+    }
+  }
+]
