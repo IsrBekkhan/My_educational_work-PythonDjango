@@ -1,11 +1,12 @@
 from django.contrib.auth.decorators import login_required, permission_required, user_passes_test
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.views import LogoutView
+from django.contrib.auth.mixins import UserPassesTestMixin
 from django.http import HttpRequest, HttpResponse, JsonResponse
 from django.contrib.auth import authenticate, login
-from django.urls import reverse_lazy
+from django.urls import reverse_lazy, reverse
 from django.views import View
-from django.views.generic import TemplateView, CreateView
+from django.views.generic import TemplateView, CreateView, UpdateView, ListView, DetailView
 
 from .models import Profile
 
@@ -31,6 +32,36 @@ class RegisterView(CreateView):
         )
         login(request=self.request, user=user)
         return response
+
+
+class ProfileUpdateView(UserPassesTestMixin, UpdateView):
+    model = Profile
+    fields = "bio", "avatar"
+    # template_name = "myauth/profile_update_form.html"
+    template_name_suffix = "_update_form"
+
+    def get_success_url(self):
+        if self.request.user.pk == self.get_object().user.pk:
+            return reverse(
+                "myauth:about-me",
+            )
+        return reverse(
+            "myauth:profile_details",
+            kwargs={"pk": self.get_object().pk}
+        )
+
+    def test_func(self):
+        return (self.request.user.is_staff or
+                (self.request.user.pk == self.get_object().user.pk) or
+                self.request.user.has_perm("myauth.change_profile"))
+
+
+class ProfileDetailsView(DetailView):
+    model = Profile
+
+
+class UserListView(ListView):
+    queryset = Profile.objects.select_related("user")
 
 
 class MyLogoutView(LogoutView):
