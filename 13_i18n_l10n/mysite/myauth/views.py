@@ -7,8 +7,27 @@ from django.urls import reverse_lazy
 from django.views import View
 from django.http.response import JsonResponse
 from django.views.generic import TemplateView, CreateView
+from django.utils.translation import gettext_lazy as _, ngettext
 
 from .models import Profile
+
+
+class HelloWorldView(View):
+    hello_message = _("Welcome hello world!")
+
+    def get(self, request: HttpRequest) -> HttpResponse:
+        items_str = request.GET.get("items") or 0
+        items = int(items_str)
+        products_line = ngettext(
+            "one product",
+            "{count} products",
+            items,
+        )
+        products_line = products_line.format(count=items)
+        return HttpResponse(
+            f"<h1>{self.hello_message}</h1>"
+            f"\n<h2>{products_line}</h2>"
+        )
 
 
 class AboutMeView(TemplateView):
