@@ -1,0 +1,91 @@
+2024-09-13 12:39:51,336 [INFO] shopapp.views: Rendering shop index
+2024-09-13 12:39:51,487 [INFO] shopapp.views: Rendering shop index
+2024-09-13 12:43:54,058 [INFO] django.utils.autoreload: /home/bekkhan/PycharmProjects/python_django/17_logging/mysite/mysite/settings.py changed, reloading.
+2024-09-13 12:43:54,382 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2024-09-13 12:44:12,776 [INFO] shopapp.views: Rendering shop index
+2024-09-13 12:44:13,010 [INFO] shopapp.views: Rendering shop index
+2024-09-13 12:44:13,208 [INFO] shopapp.views: Rendering shop index
+2024-09-13 12:44:13,522 [INFO] shopapp.views: Rendering shop index
+2024-09-13 12:45:15,504 [INFO] django.utils.autoreload: /home/bekkhan/PycharmProjects/python_django/17_logging/mysite/mysite/settings.py changed, reloading.
+2024-09-13 12:45:15,806 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2024-09-14 10:00:18,488 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2024-09-14 10:00:52,957 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2024-09-14 10:04:55,586 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2024-09-14 10:04:58,214 [WARNING] django.request: Not Found: /
+2024-09-14 10:04:58,400 [WARNING] django.request: Not Found: /favicon.ico
+2024-09-15 11:56:04,249 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2024-09-15 11:56:06,446 [WARNING] django.request: Not Found: /
+2024-09-15 11:57:34,767 [INFO] django.utils.autoreload: /home/bekkhan/PycharmProjects/python_django/17_logging/mysite/shopapp/views.py changed, reloading.
+2024-09-15 11:57:35,116 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2024-09-15 11:57:42,450 [INFO] django.utils.autoreload: /home/bekkhan/PycharmProjects/python_django/17_logging/mysite/shopapp/views.py changed, reloading.
+2024-09-15 11:57:43,130 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2024-09-15 11:57:48,467 [INFO] django.utils.autoreload: /home/bekkhan/PycharmProjects/python_django/17_logging/mysite/shopapp/views.py changed, reloading.
+2024-09-15 11:57:48,741 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2024-09-15 11:57:52,062 [INFO] django.utils.autoreload: /home/bekkhan/PycharmProjects/python_django/17_logging/mysite/shopapp/views.py changed, reloading.
+2024-09-15 11:57:52,403 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2024-09-15 11:58:56,900 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2024-09-15 11:59:15,392 [INFO] django.utils.autoreload: /home/bekkhan/PycharmProjects/python_django/17_logging/mysite/shopapp/views.py changed, reloading.
+2024-09-15 11:59:15,696 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2024-09-15 11:59:33,467 [ERROR] django.request: Internal Server Error: /shop/products/export/
+Traceback (most recent call last):
+  File "/home/bekkhan/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/bekkhan/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bekkhan/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bekkhan/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bekkhan/PycharmProjects/python_django/17_logging/mysite/shopapp/views.py", line 143, in get
+    name = elem["naem"]
+KeyError: 'naem'
+2024-09-15 12:20:56,880 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2024-09-15 12:21:11,498 [ERROR] django.request: Internal Server Error: /shop/products/export/
+Traceback (most recent call last):
+  File "/home/bekkhan/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/bekkhan/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bekkhan/PycharmProjects/python_django/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 90, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/bekkhan/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bekkhan/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bekkhan/PycharmProjects/python_django/17_logging/mysite/shopapp/views.py", line 143, in get
+    name = elem["naem"]
+KeyError: 'naem'
+2024-09-15 12:21:49,720 [ERROR] django.request: Internal Server Error: /shop/products/export/
+Traceback (most recent call last):
+  File "/home/bekkhan/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/bekkhan/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bekkhan/PycharmProjects/python_django/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 90, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/bekkhan/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bekkhan/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bekkhan/PycharmProjects/python_django/17_logging/mysite/shopapp/views.py", line 143, in get
+    name = elem["naem"]
+KeyError: 'naem'
+2024-09-15 12:22:43,760 [INFO] django.utils.autoreload: /home/bekkhan/PycharmProjects/python_django/17_logging/mysite/mysite/settings.py changed, reloading.
+2024-09-15 12:22:44,224 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
+2024-09-15 12:22:56,355 [ERROR] django.request: Internal Server Error: /shop/products/export/
+Traceback (most recent call last):
+  File "/home/bekkhan/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/core/handlers/exception.py", line 55, in inner
+    response = get_response(request)
+  File "/home/bekkhan/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/core/handlers/base.py", line 197, in _get_response
+    response = wrapped_callback(request, *callback_args, **callback_kwargs)
+  File "/home/bekkhan/PycharmProjects/python_django/venv/lib/python3.10/site-packages/sentry_sdk/integrations/django/views.py", line 90, in sentry_wrapped_callback
+    return callback(request, *args, **kwargs)
+  File "/home/bekkhan/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 104, in view
+    return self.dispatch(request, *args, **kwargs)
+  File "/home/bekkhan/PycharmProjects/python_django/venv/lib/python3.10/site-packages/django/views/generic/base.py", line 143, in dispatch
+    return handler(request, *args, **kwargs)
+  File "/home/bekkhan/PycharmProjects/python_django/17_logging/mysite/shopapp/views.py", line 143, in get
+    name = elem["naem"]
+KeyError: 'naem'
+2024-09-15 12:26:19,209 [INFO] django.utils.autoreload: /home/bekkhan/PycharmProjects/python_django/17_logging/mysite/shopapp/views.py changed, reloading.
+2024-09-15 12:26:19,578 [INFO] django.utils.autoreload: Watching for file changes with StatReloader
