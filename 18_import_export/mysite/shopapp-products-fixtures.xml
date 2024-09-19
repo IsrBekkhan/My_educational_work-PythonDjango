@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<django-objects version="1.0">
+    <object model="shopapp.product" pk="1">
+        <field name="name" type="CharField">Laptop</field>
+        <field name="description" type="TextField">It's laptop</field>
+        <field name="price" type="DecimalField">1000.00</field>
+        <field name="discount" type="SmallIntegerField">10</field>
+        <field name="created_at" type="DateTimeField">2024-09-16T08:06:50.916341+00:00</field>
+        <field name="archived" type="BooleanField">False</field>
+        <field name="preview" type="FileField"></field>
+    </object>
+    <object model="shopapp.product" pk="2">
+        <field name="name" type="CharField">Notebook</field>
+        <field name="description" type="TextField">It's notebook</field>
+        <field name="price" type="DecimalField">1200.00</field>
+        <field name="discount" type="SmallIntegerField">20</field>
+        <field name="created_at" type="DateTimeField">2024-09-16T08:07:09.866091+00:00</field>
+        <field name="archived" type="BooleanField">False</field>
+        <field name="preview" type="FileField"></field>
+    </object>
+    <object model="shopapp.product" pk="3">
+        <field name="name" type="CharField">Car</field>
+        <field name="description" type="TextField">It's a best car</field>
+        <field name="price" type="DecimalField">5000.00</field>
+        <field name="discount" type="SmallIntegerField">30</field>
+        <field name="created_at" type="DateTimeField">
+            <None></None>
+        </field>
+        <field name="archived" type="BooleanField">False</field>
+        <field name="preview" type="FileField"></field>
+    </object>
+    <object model="shopapp.product" pk="4">
+        <field name="name" type="CharField">Phone</field>
+        <field name="description" type="TextField">It's phone</field>
+        <field name="price" type="DecimalField">500.00</field>
+        <field name="discount" type="SmallIntegerField">5</field>
+        <field name="created_at" type="DateTimeField">
+            <None></None>
+        </field>
+        <field name="archived" type="BooleanField">False</field>
+        <field name="preview" type="FileField"></field>
+    </object>
+</django-objects>
