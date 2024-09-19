@@ -1,0 +1,54 @@
+[
+  {
+    "model": "shopapp.product",
+    "pk": 1,
+    "fields": {
+      "name": "Laptop",
+      "description": "It's laptop",
+      "price": "1000.00",
+      "discount": 10,
+      "created_at": "2024-09-16T08:06:50.916Z",
+      "archived": false,
+      "preview": ""
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 2,
+    "fields": {
+      "name": "Notebook",
+      "description": "It's notebook",
+      "price": "1200.00",
+      "discount": 20,
+      "created_at": "2024-09-16T08:07:09.866Z",
+      "archived": false,
+      "preview": ""
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 3,
+    "fields": {
+      "name": "Car",
+      "description": "It's a best car",
+      "price": "5000.00",
+      "discount": 30,
+      "created_at": null,
+      "archived": false,
+      "preview": ""
+    }
+  },
+  {
+    "model": "shopapp.product",
+    "pk": 4,
+    "fields": {
+      "name": "Phone",
+      "description": "It's phone",
+      "price": "500.00",
+      "discount": 5,
+      "created_at": null,
+      "archived": false,
+      "preview": ""
+    }
+  }
+]
