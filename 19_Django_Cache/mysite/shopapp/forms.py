@@ -1,6 +1,6 @@
 from django import forms
 
-from shopapp.models import Product
+from shopapp.models import Product, Order
 
 
 class ProductForm(forms.ModelForm):
@@ -9,7 +9,7 @@ class ProductForm(forms.ModelForm):
         fields = "name", "price", "description", "discount", "preview"
 
     images = forms.ImageField(
-        widget=forms.ClearableFileInput(attrs={"multiple": True}),
+        widget=forms.ClearableFileInput(attrs={"allow_multiple_selected": True}),
     )
 
 
