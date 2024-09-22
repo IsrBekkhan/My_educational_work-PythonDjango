@@ -1,12 +1,16 @@
 from csv import DictWriter
 from timeit import default_timer
 
+from django.core.cache import cache
 from django.http import HttpResponse, HttpRequest, HttpResponseRedirect, JsonResponse
-from django.shortcuts import render, reverse
+from django.shortcuts import render, reverse, get_object_or_404
 from django.urls import reverse_lazy
 from django.views import View
 from django.views.generic import ListView, DetailView, CreateView, UpdateView, DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
+from django.contrib.auth.models import User
+from django.utils.decorators import method_decorator
+from django.views.decorators.cache import cache_page
 from rest_framework.parsers import MultiPartParser
 from rest_framework.request import Request
 from rest_framework.response import Response
@@ -19,6 +23,26 @@ from .common import save_csv_products
 from .forms import ProductForm
 from .models import Product, Order, ProductImage
 from .serializers import ProductSerializer
+
+
+class UserOrdersListView(LoginRequiredMixin, ListView):
+    owner = None
+    template_name = "shopapp/user_orders_list.html"
+    queryset = (
+        Order.objects
+        .select_related("user")
+        .prefetch_related("products")
+        .all()
+    )
+
+    def get_queryset(self):
+        self.owner = get_object_or_404(User, pk=self.kwargs["pk"])
+        return super().get_queryset().filter(user__pk=self.owner.pk)
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["owner"] = self.owner
+        return context
 
 
 class ProductViewSet(ModelViewSet):
@@ -42,6 +66,11 @@ class ProductViewSet(ModelViewSet):
         "price",
         "discount",
     ]
+
+    @method_decorator(cache_page(60 * 2))
+    def list(self, *args, **kwargs):
+        print("hello products list")
+        return super().list(*args, **kwargs)
 
     @action(methods=["get"], detail=False)
     def download_csv(self, request: Request):
@@ -82,6 +111,8 @@ class ProductViewSet(ModelViewSet):
 
 
 class ShopIndexView(View):
+
+    # @method_decorator(cache_page(60 * 2))
     def get(self, request: HttpRequest) -> HttpResponse:
         products = [
             ('Laptop', 1999),
@@ -92,6 +123,7 @@ class ShopIndexView(View):
             "time_running": default_timer(),
             "products": products,
         }
+        print("shop index context", context)
         return render(request, 'shopapp/shop-index.html', context=context)
 
 
@@ -167,14 +199,58 @@ class OrderDetailView(PermissionRequiredMixin, DetailView):
 
 class ProductsDataExportView(View):
     def get(self, request: HttpRequest) -> JsonResponse:
-        products = Product.objects.order_by('pk').all()
-        products_data = [
-            {
-                "pk": product.pk,
-                "name": product.name,
-                "price": product.price,
-                "archived": product.archived,
-            }
-            for product in products
-        ]
+        cache_key = "products_data_export"
+        products_data = cache.get(cache_key)
+
+        if products_data is None:
+            products = Product.objects.order_by('pk').all()
+            products_data = [
+                {
+                    "pk": product.pk,
+                    "name": product.name,
+                    "price": product.price,
+                    "archived": product.archived,
+                }
+                for product in products
+            ]
+        cache.set("products_data_export", products_data, 300)
         return JsonResponse({"products": products_data})
+
+
+class OrdersDataExportView(View):
+    def get(self, request: HttpRequest, user_id: int) -> JsonResponse:
+        owner = get_object_or_404(User, pk=user_id)
+        orders_data = cache.get(owner.pk)
+
+        if orders_data is None:
+            print("Test cache working")
+            orders = (
+                Order.objects
+                .select_related("user")
+                .prefetch_related("products")
+                .filter(user=owner)
+                .order_by("pk")
+                .all()
+            )
+
+            orders_data = [
+                {
+                    "delivery_address": order.delivery_address,
+                    "promocode": order.promocode,
+                    "created_at": order.created_at,
+                    "username": order.user.username,
+                    "products": [
+                        {
+                            "name": product.name,
+                            "price": product.price,
+                            "discount": product.discount,
+                        }
+                        for product in order.products.all()
+                    ]
+                }
+                for order in orders
+            ]
+
+        cache.set(owner.pk, orders_data, 300)
+        return JsonResponse({"orders": orders_data})
+
