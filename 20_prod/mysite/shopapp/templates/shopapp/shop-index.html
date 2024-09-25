@@ -14,7 +14,7 @@
     <ul>
       {% for name, price in products %}
         <li>{{ name }} ({{ name|length }}) for ${{ price }}</li>
-        {% if name|length_is:'7' %}
+        {% if name|length == 7 %}
           <span>Lucky product!</span>
         {% endif %}
       {% empty %}
