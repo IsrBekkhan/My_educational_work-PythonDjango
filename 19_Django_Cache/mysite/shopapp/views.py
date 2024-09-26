@@ -22,7 +22,7 @@ from django_filters.rest_framework import DjangoFilterBackend
 from .common import save_csv_products
 from .forms import ProductForm
 from .models import Product, Order, ProductImage
-from .serializers import ProductSerializer
+from .serializers import ProductSerializer, OrderSerializer
 
 
 class UserOrdersListView(LoginRequiredMixin, ListView):
@@ -233,24 +233,7 @@ class OrdersDataExportView(View):
                 .all()
             )
 
-            orders_data = [
-                {
-                    "delivery_address": order.delivery_address,
-                    "promocode": order.promocode,
-                    "created_at": order.created_at,
-                    "username": order.user.username,
-                    "products": [
-                        {
-                            "name": product.name,
-                            "price": product.price,
-                            "discount": product.discount,
-                        }
-                        for product in order.products.all()
-                    ]
-                }
-                for order in orders
-            ]
-
+            orders_data = OrderSerializer(orders, many=True).data
         cache.set(owner.pk, orders_data, 300)
         return JsonResponse({"orders": orders_data})
 
